@@ -35,41 +35,5 @@ const ActionButon = ({desc, title}) => {
     </View>
   );
 };
-const WelcomeAuth = () => {
-  return (
-    <View
-      style={{
-        alignItems: 'center',
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'white',
-      }}>
-      <View
-        style={{
-          width: 219,
-          height: 117,
-          backgroundColor: '#A55EEA',
-          marginBottom: 10,
-        }}></View>
-      <Text
-        style={{
-          fontWeight: 'bold',
-          fontSize: 18,
-          color: '#A55EEA',
-          marginBottom: 76,
-        }}>
-        Selamat Datang Di Ojol-App
-      </Text>
-      <ActionButon
-        desc="Silahkan Masuk jika anda sudah memiliki akun"
-        title="Masuk"
-      />
-      <ActionButon
-        desc="atau silahkan daftar jika anda belum memiliki akun"
-        title="Register"
-      />
-    </View>
-  );
-};
 
-export default WelcomeAuth;
+export default ActionButon;
