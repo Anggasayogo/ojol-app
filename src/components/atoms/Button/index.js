@@ -3,9 +3,9 @@ import {Text} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {colors} from '../../../utils';
 
-const Button = ({title}) => {
+const Button = ({title, onPress}) => {
   return (
-    <TouchableOpacity style={styles.warpper.components}>
+    <TouchableOpacity style={styles.warpper.components} onPress={onPress}>
       <Text style={styles.warpper.text.title}>{title}</Text>
     </TouchableOpacity>
   );
