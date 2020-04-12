@@ -5,13 +5,19 @@ import {RegisterImage} from '../../assets';
 import {colors} from '../../utils';
 import {BackIcon} from '../../assets';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useSelector} from 'react-redux';
 
 const Register = () => {
+  const registerReducer = useSelector(state => state.RegisterReducer);
   const [form, setForm] = useState({
     fullName: '',
     email: '',
     password: '',
   });
+
+  useEffect(() => {
+    console.log('globa :', registerReducer);
+  }, [registerReducer]);
 
   const sendData = () => {
     console.log('data yang dikirim', form);
@@ -29,7 +35,8 @@ const Register = () => {
         <Image source={BackIcon} style={styles.wrapper.iconBack} />
         <Image source={RegisterImage} style={styles.wrapper.imageHero} />
         <Text style={styles.wrapper.title}>
-          Mohon mengisi form register untuk pembuatan account anda
+          Mohon mengisi form register untuk pembuatan account anda{' '}
+          {registerReducer.title}
         </Text>
         <View style={styles.space(64)} />
         <Input
