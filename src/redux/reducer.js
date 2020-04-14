@@ -5,11 +5,31 @@ const initialState = {
 };
 
 const initialRegister = {
+  form: {
+    fullName: '',
+    email: '',
+    password: '',
+  },
   title: 'Register Page',
   desc: 'ini adalah desc untuk register',
 };
 
 const RegisterReducer = (state = initialRegister, action) => {
+  if (action.type === 'SET_TITLE') {
+    return {
+      ...state,
+      title: 'Ganti Title Baru',
+    };
+  }
+  if (action.type === 'SET_FORM') {
+    return {
+      ...state,
+      form: {
+        ...state.form,
+        [action.inputType]: action.inputValue,
+      },
+    };
+  }
   return state;
 };
 

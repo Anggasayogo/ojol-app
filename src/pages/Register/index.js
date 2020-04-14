@@ -5,29 +5,27 @@ import {RegisterImage} from '../../assets';
 import {colors} from '../../utils';
 import {BackIcon} from '../../assets';
 import {ScrollView} from 'react-native-gesture-handler';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 const Register = () => {
   const registerReducer = useSelector(state => state.RegisterReducer);
-  const [form, setForm] = useState({
-    fullName: '',
-    email: '',
-    password: '',
-  });
-
-  useEffect(() => {
-    console.log('globa :', registerReducer);
-  }, [registerReducer]);
+  const dispatch = useDispatch();
+  // const [form, setForm] = useState({
+  //   fullName: '',
+  //   email: '',
+  //   password: '',
+  // });
 
   const sendData = () => {
-    console.log('data yang dikirim', form);
+    console.log('data yang dikirim', registerReducer.form);
   };
 
   const onInputChange = (value, input) => {
-    setForm({
-      ...form,
-      [input]: value,
-    });
+    dispatch({type: 'SET_FORM', inputType: input, inputValue: value});
+    // setForm({
+    //   ...form,
+    //   [input]: value,
+    // });
   };
   return (
     <View style={styles.wrapper.page}>
@@ -41,19 +39,19 @@ const Register = () => {
         <View style={styles.space(64)} />
         <Input
           placeholder="Nama Lengkap"
-          value={form.fullName}
-          onChangeText={value => onInputChange(value, 'fullname')}
+          value={registerReducer.form.fullName}
+          onChangeText={value => onInputChange(value, 'fullName')}
         />
         <View style={styles.space(33)} />
         <Input
           placeholder="Email"
-          value={form.email}
+          value={registerReducer.form.email}
           onChangeText={value => onInputChange(value, 'email')}
         />
         <View style={styles.space(33)} />
         <Input
           placeholder="Password"
-          value={form.password}
+          value={registerReducer.form.password}
           onChangeText={value => onInputChange(value, 'password')}
           secureTextEntry={true}
         />
