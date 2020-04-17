@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Image} from 'react-native';
-import {Input, Button} from '../../components';
-import {RegisterImage} from '../../assets';
-import {colors} from '../../utils';
-import {BackIcon} from '../../assets';
+import React from 'react';
+import {Image, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {RegisterImage} from '../../assets';
+import {Button, Input} from '../../components';
+import ButtonIcon from '../../components/atoms/Button/ButtonIcon';
 import {setForm} from '../../redux';
+import {colors} from '../../utils';
 
-const Register = () => {
+const Register = ({navigation}) => {
   const {form} = useSelector(state => state.RegisterReducer);
   const dispatch = useDispatch();
 
@@ -22,7 +22,11 @@ const Register = () => {
   return (
     <View style={styles.wrapper.page}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Image source={BackIcon} style={styles.wrapper.iconBack} />
+        <ButtonIcon
+          name="back"
+          type="icon"
+          onPress={() => navigation.goBack()}
+        />
         <Image source={RegisterImage} style={styles.wrapper.imageHero} />
         <Text style={styles.wrapper.title}>
           Mohon mengisi form register untuk pembuatan account anda
@@ -64,7 +68,6 @@ const styles = {
     imageHero: {
       width: 106,
       height: 115,
-      backgroundColor: 'purple',
       marginTop: 8,
     },
     title: {
